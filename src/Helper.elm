@@ -15,9 +15,9 @@ main =
 
 
 type GradeStatus
-    = Approved
+    = Pending
+    | Approved
     | Failed
-    | Pending
 
 
 categorize : Float -> GradeStatus
@@ -25,15 +25,15 @@ categorize grade =
     if grade < 0 then
         Pending
 
-    else if grade > 7 then
+    else if grade >= 7 then
         Approved
 
     else
         Failed
 
 
-categoriGrades : List Float -> List GradeStatus
-categoriGrades list =
+categoricalGrade : List Float -> List GradeStatus
+categoricalGrade list =
     List.map categorize list
 
 
@@ -48,7 +48,7 @@ airplaneScheduleAction : AirplaneStatus -> String
 airplaneScheduleAction status =
     case status of
         Cancelled ->
-            "Pedir Reembolso"
+            "Pedir reembolso"
 
         Boarding ->
             "Buscar boleto"
